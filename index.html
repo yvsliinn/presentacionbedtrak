@@ -56,7 +56,7 @@
             grid-template-columns: 1.1fr 0.9fr;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+            transition: opacity 2.5s ease-in-out, visibility 2.5s ease-in-out;
             z-index: 1;
         }
 
@@ -105,6 +105,17 @@
             font-size: 1.15rem;
             line-height: 1.7;
             color: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .slide-slogan {
+            font-size: 1rem;
+            font-style: italic;
+            color: #b7094c;
+            font-weight: 600;
+            border-left: 3px solid var(--rosa-fuerte);
+            padding-left: 10px;
+            margin-top: 10px;
         }
 
         .slide-image-wrapper {
@@ -118,7 +129,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 12s ease;
+            transition: transform 22s ease;
         }
 
         .slide.active .slide-image {
@@ -186,8 +197,9 @@
         <div class="slide active">
             <div class="slide-content">
                 <div class="slide-tag" style="background-color: var(--celeste-medio); color: #0284c7;">Innovación Médica</div>
-                <h2 class="slide-title">Gestión de Camas en <span>Tiempo Real</span></h2>
-                <p class="slide-text">Presentamos una solución digital diseñada para optimizar los recursos hospitalarios más valiosos. Monitoreo instantáneo, seguro y estético para la salud moderna.</p>
+                <h2 class="slide-title">¿Qué es <span>BedTrak 2026</span>?</h2>
+                <p class="slide-text">BedTrak es una plataforma web inteligente de control logístico clínico. Centraliza el estado de las camas, los historiales de dosis de medicamentos y la comunicación médica en un solo entorno unificado y de alta disponibilidad.</p>
+                <div class="slide-slogan">"Tecnología que cuida, gestión que salva vidas"</div>
             </div>
             <div class="slide-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1586773860418-d3b3de97e663?auto=format&fit=crop&q=80&w=600" class="slide-image" alt="Hospital Bed 1">
@@ -199,6 +211,7 @@
                 <div class="slide-tag">El Desafío</div>
                 <h2 class="slide-title">Adiós al Caos del <span>Papeleo</span></h2>
                 <p class="slide-text">Los métodos analógicos y las pizarras físicas retrasan el flujo de información. Cada minuto perdido buscando una cama libre pone en riesgo el bienestar del paciente.</p>
+                <div class="slide-slogan">"Tecnología que cuida, gestión que salva vidas"</div>
             </div>
             <div class="slide-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=600" class="slide-image" alt="Hospital Bed 2">
@@ -210,6 +223,7 @@
                 <div class="slide-tag" style="background-color: var(--celeste-medio); color: #0284c7;">Roles Clave</div>
                 <h2 class="slide-title">Control Clínico del <span>Médico</span></h2>
                 <p class="slide-text">El médico asigna pacientes, define los medicamentos, califica el rango de urgencia y tiene la autoridad exclusiva para firmar y aprobar el alta definitiva.</p>
+                <div class="slide-slogan">"Tecnología que cuida, gestión que salva vidas"</div>
             </div>
             <div class="slide-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=600" class="slide-image" alt="Hospital Bed 3">
@@ -221,6 +235,7 @@
                 <div class="slide-tag">Monitoreo Activo</div>
                 <h2 class="slide-title">Control de Dosis de <span>Enfermería</span></h2>
                 <p class="slide-text">La enfermera registra la administración exacta de medicamentos cada hora, organiza áreas y genera alertas instantáneas de "Solicitud de Alta" para el doctor.</p>
+                <div class="slide-slogan">"Tecnología que cuida, gestión que salva vidas"</div>
             </div>
             <div class="slide-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" class="slide-image" alt="Hospital Bed 4">
@@ -230,8 +245,9 @@
         <div class="slide">
             <div class="slide-content">
                 <div class="slide-tag" style="background-color: var(--celeste-medio); color: #0284c7;">Eficiencia Total</div>
-                <h2 class="slide-title">Tecnología que <span>Salva Vidas</span></h2>
+                <h2 class="slide-title">Impacto en la <span>Salud</span></h2>
                 <p class="slide-text">BedTrak 2026 reduce los tiempos muertos logísticos en un hospital, previene fallas de comunicación y humaniza la tecnología al servicio de la medicina.</p>
+                <div class="slide-slogan">"Tecnología que cuida, gestión que salva vidas"</div>
             </div>
             <div class="slide-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1538108149393-fdfd8169687d?auto=format&fit=crop&q=80&w=600" class="slide-image" alt="Hospital Bed 5">
@@ -249,7 +265,7 @@
         const dotsContainer = document.getElementById('dotsContainer');
         const progressBar = document.getElementById('progressBar');
         let currentSlide = 0;
-        const slideIntervalTime = 10000; 
+        const slideIntervalTime = 20000; 
 
         slides.forEach((_, idx) => {
             const dot = document.createElement('div');
