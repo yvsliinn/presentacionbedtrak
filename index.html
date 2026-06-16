@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BedTrak 2026 - Presentación Oficial</title>
+    <title>BedTrak 2026 - Presentación Oficial con QR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root {
             --rosa-claro: #fff0f3;
@@ -35,9 +36,9 @@
 
         .presentation-container {
             position: relative;
-            width: 90vw;
-            max-width: 1100px;
-            height: 80vh;
+            width: 95vw;
+            max-width: 1200px;
+            height: 85vh;
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             border-radius: 24px;
@@ -72,6 +73,7 @@
             flex-direction: column;
             justify-content: center;
             background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+            padding-right: 40px;
         }
 
         .slide-tag {
@@ -88,7 +90,7 @@
         }
 
         .slide-title {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             color: #334155;
             font-weight: 800;
             line-height: 1.2;
@@ -102,14 +104,14 @@
         }
 
         .slide-text {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             line-height: 1.7;
             color: #64748b;
             margin-bottom: 15px;
         }
 
         .slide-slogan {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-style: italic;
             color: #b7094c;
             font-weight: 600;
@@ -147,6 +149,34 @@
         }
         .brand-watermark span {
             color: var(--rosa-fuerte);
+        }
+
+        /* Contenedor Fijo Estético para el QR Integrado */
+        .fixed-qr-panel {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 15px;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 2px solid var(--rosa-medio);
+            text-align: center;
+            z-index: 20;
+            width: 160px;
+        }
+
+        .fixed-qr-panel p {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #334155;
+            margin-top: 8px;
+            line-height: 1.2;
+        }
+
+        #qrcode img {
+            margin: 0 auto;
+            border-radius: 6px;
         }
 
         .progress-bar-container {
@@ -194,6 +224,13 @@
     <div class="presentation-container">
         <div class="brand-watermark">BedTrak <span>2026</span></div>
 
+        <!-- PANEL DE QR FIJO -->
+        <div class="fixed-qr-panel">
+            <div id="qrcode"></div>
+            <p>¡Escanea y prueba<br>la App en vivo!</p>
+        </div>
+
+        <!-- DIAPOSITIVA 1 -->
         <div class="slide active">
             <div class="slide-content">
                 <div class="slide-tag" style="background-color: var(--celeste-medio); color: #0284c7;">Innovación Médica</div>
@@ -206,6 +243,7 @@
             </div>
         </div>
 
+        <!-- DIAPOSITIVA 2 -->
         <div class="slide">
             <div class="slide-content">
                 <div class="slide-tag">El Desafío</div>
@@ -218,6 +256,7 @@
             </div>
         </div>
 
+        <!-- DIAPOSITIVA 3 -->
         <div class="slide">
             <div class="slide-content">
                 <div class="slide-tag" style="background-color: var(--celeste-medio); color: #0284c7;">Roles Clave</div>
@@ -230,6 +269,7 @@
             </div>
         </div>
 
+        <!-- DIAPOSITIVA 4 -->
         <div class="slide">
             <div class="slide-content">
                 <div class="slide-tag">Monitoreo Activo</div>
@@ -242,6 +282,7 @@
             </div>
         </div>
 
+        <!-- DIAPOSITIVA 5 -->
         <div class="slide">
             <div class="slide-content">
                 <div class="slide-tag" style="background-color: var(--celeste-medio); color: #0284c7;">Eficiencia Total</div>
@@ -266,6 +307,15 @@
         const progressBar = document.getElementById('progressBar');
         let currentSlide = 0;
         const slideIntervalTime = 20000; 
+
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://yvsliinn.github.io/Innovacion/",
+            width: 130,
+            height: 130,
+            colorDark : "#334155",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
 
         slides.forEach((_, idx) => {
             const dot = document.createElement('div');
