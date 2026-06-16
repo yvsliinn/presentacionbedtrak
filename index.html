@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BedTrak 2026 - Presentación Oficial</title>
+    <style>
+        /* Paleta de colores Pastel / Aesthetic Profesional */
+        :root {
+            --rosa-claro: #fff0f3;
+            --rosa-medio: #ffccd5;
+            --rosa-fuerte: #ffb3c6;
+            --celeste-claro: #e8f1f5;
+            --celeste-medio: #b3e5fc;
+            --celeste-fuerte: #80d8ff;
+            --texto: #475569;
+            --blanco: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--rosa-claro) 0%, var(--celeste-claro) 100%);
+            color: var(--texto);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Contenedor Principal de la Presentación */
+        .presentation-container {
+            position: relative;
+            width: 90vw;
+            max-width: 1100px;
+            height: 80vh;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            border: 2px solid var(--blanco);
+            overflow: hidden;
+        }
+
+        /* Estructura de cada Diapositiva */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s;
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+
+        /* Bloque de Texto (Izquierda) */
+        .slide-content {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .slide-tag {
+            align-self: flex-start;
+            background: var(--rosa-medio);
+            color: #b7094c;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .slide-title {
+            font-size: 2.8rem;
+            color: #334155;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .slide-title span {
+            background: linear-gradient(45deg, #74c69d, #80d8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slide-text {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #64748b;
+        }
+
+        /* Bloque de Imagen (Derecha) */
+        .slide-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 6s ease;
+        }
+
+        /* Efecto Zoom sutil al estar activa */
+        .slide.active .slide-image {
+            transform: scale(1.08);
+        }
+
+        /* Decoración e Identificador de Marca */
+        .brand-watermark {
+            position: absolute;
+            top: 25px;
+            left: 40px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #64748b;
+            z-index: 10;
+        }
+        .brand-watermark span {
+            color: var(--rosa-fuerte);
+        }
+
+        /* Barra de Progreso Inferior */
+        .progress-bar-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(0,0,0,0.03);
+            z-index: 10;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--celeste-fuerte), var(--rosa-fuerte));
+            transition: width 4s linear;
+        }
+
+        /* Indicadores de bolitas */
+        .dots-navigation {
+            position: absolute;
+            bottom: 30px;
+            left: 60px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            width: 30px;
+            border-radius: 10px;
+            background: var(--rosa-fuerte);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        <!-- Marca fija -->
+        <div class="brand-watermark">BedTrak <span>2026</span></div>
+
+        <!-- DIAPOSITIVA 1: INTRODUCCIÓN -->
+        <div class="slide active">
+            <div class="slide-content">
+                <div class="slide-tag" style="background-color: var(--celeste-medio); color: #0284c7;">Innovación Médica</div>
+                <h2 class="slide-title">Gestión de Camas en <span>Tiempo Real</span></h2>
+                <p class="slide-text">Presentamos una solución digital diseñada para optimizar los recursos hospitalarios más valiosos. Monitoreo instantáneo, seguro y estético para la salud moderna.</p>
+            </div>
+            <div class="slide-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1586773860418-d3b3de97e663?auto=format&fit=crop&q=80&w=600" class="slide-image" alt="Hospital Bed 1">
+            </div>
+        </div>
+
+        <!-- DIAPOSITIVA 2: EL PROBLEMA -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="slide-tag">El Desafío</div>
+                <h2 class="slide-title">Adiós al Caos del <span>Papeleo</span></h2>
+                <p class="slide-text">Los métodos analógicos y las pizarras físicas retrasan el flujo de información. Cada minuto perdido buscando una cama libre pone en riesgo el bienestar del paciente.</p>
+            </div>
+            <div class="slide-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=600" class="slide-image" alt="Hospital Bed 2">
+            </div>
+        </div>
+
+        <!-- DIAPOSITIVA 3: PERFIL DOCTOR -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="slide-tag" style="background-color: var(--celeste-medio); color: #0284c7;">Roles Clave</div>
+                <h2 class="slide-title">Control Clínico del <span>Médico</span></h2>
+                <p class="slide-text">El médico asigna pacientes, define los medicamentos, califica el rango de urgencia y tiene la autoridad exclusiva para firmar y aprobar el alta definitiva.</p>
+            </div>
+            <div class="slide-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&q=80&w=600" class="slide-image" alt="Hospital Bed 3">
+            </div>
+        </div>
+
+        <!-- DIAPOSITIVA 4: PERFIL ENFERMERA -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="slide-tag">Monitoreo Activo</div>
+                <h2 class="slide-title">Control de Dosis de <span>Enfermería</span></h2>
+                <p class="slide-text">La enfermera registra la administración exacta de medicamentos cada hora, organiza áreas y genera alertas instantáneas de "Solicitud de Alta" para el doctor.</p>
+            </div>
+            <div class="slide-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=600" class="slide-image" alt="Hospital Bed 4">
+            </div>
+        </div>
+
+        <!-- DIAPOSITIVA 5: IMPACTO -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="slide-tag" style="background-color: var(--celeste-medio); color: #0284c7;">Eficiencia Total</div>
+                <h2 class="slide-title">Tecnología que <span>Salva Vives</span></h2>
+                <p class="slide-text">BedTrak 2026 reduce los tiempos muertos logísticos en un hospital, previene fallas de comunicación y humaniza la tecnología al servicio de la medicina.</p>
+            </div>
+            <div class="slide-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1538108149393-fdfd8169687d?auto=format&fit=crop&q=80&w=600" class="slide-image" alt="Hospital Bed 5">
+            </div>
+        </div>
+
+        <!-- Controles visuales inferiores -->
+        <div class="dots-navigation" id="dotsContainer"></div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.getElementById('dotsContainer');
+        const progressBar = document.getElementById('progressBar');
+        let currentSlide = 0;
+        const slideIntervalTime = 4000; // Tiempo por diapositiva: 4 segundos
+
+        // Generar bolitas de navegación dinámicamente
+        slides.forEach((_, idx) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if(idx === 0) dot.classList.add('active');
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function resetProgressBar() {
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0%';
+            setTimeout(() => {
+                progressBar.style.transition = `width ${slideIntervalTime}ms linear`;
+                progressBar.style.width = '100%';
+            }, 50);
+        }
+
+        function changeSlide() {
+            // Quitar clase activa actual
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+
+            // Calcular siguiente slide
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            // Añadir clase activa al siguiente
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+
+            resetProgressBar();
+        }
+
+        // Iniciar barra de progreso de la primera diapositiva
+        resetProgressBar();
+
+        // Configurar bucle automático permanente
+        setInterval(changeSlide, slideIntervalTime);
+    </script>
+</body>
+</html>
